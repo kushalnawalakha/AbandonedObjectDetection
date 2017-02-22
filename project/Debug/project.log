@@ -1,0 +1,130 @@
+﻿Build started 3/25/2014 7:56:32 PM.
+     1>Project "C:\Users\DELL\documents\visual studio 2010\Projects\project\project\project.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\project.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\opencv\build\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BaseFile.cpp
+         BaseFile.cpp
+     1>d:\opencv\build\include\opencv2\legacy\blobtrack.hpp(187): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>d:\opencv\build\include\opencv2\legacy\blobtrack.hpp(256): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\people.h(30): warning C4101: 'e' : unreferenced local variable
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(2): error C2628: 'ObjectFile' followed by 'int' is illegal (did you forget a ';'?)
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(2): error C2512: 'ObjectFile' : no appropriate default constructor available
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(6): error C2679: binary '=' : no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+                 c:\users\dell\documents\visual studio 2010\projects\project\project\objectfile.h(19): could be 'ObjectFile &ObjectFile::operator =(const ObjectFile &)'
+                 while trying to match the argument list '(ObjectFile, int)'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(6): error C2678: binary '<' : no operator found which takes a left-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(3136): could be 'bool cv::operator <(const cv::FileNodeIterator &,const cv::FileNodeIterator &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1298): or       'cv::MatExpr cv::operator <(const cv::Mat &,const cv::Mat &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1299): or       'cv::MatExpr cv::operator <(const cv::Mat &,double)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1300): or       'cv::MatExpr cv::operator <(double,const cv::Mat &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1979): or       'bool cv::operator <(const cv::MatConstIterator &,const cv::MatConstIterator &)'
+                 while trying to match the argument list '(ObjectFile, size_t)'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(6): error C2676: binary '++' : 'ObjectFile' does not define this operator or a conversion to a type acceptable to the predefined operator
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2679: binary '[' : no operator found which takes a right-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2362): could be 'ObjectFile &cv::Vector<_Tp>::operator [](size_t)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2363): or       'const ObjectFile &cv::Vector<_Tp>::operator [](size_t) const'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 while trying to match the argument list '(cv::Vector<_Tp>, ObjectFile)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2228: left of '.list' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2228: left of '.x' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2679: binary '[' : no operator found which takes a right-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2362): could be 'ObjectFile &cv::Vector<_Tp>::operator [](size_t)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2363): or       'const ObjectFile &cv::Vector<_Tp>::operator [](size_t) const'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 while trying to match the argument list '(cv::Vector<_Tp>, ObjectFile)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2228: left of '.list' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(8): error C2228: left of '.width' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2679: binary '[' : no operator found which takes a right-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2362): could be 'ObjectFile &cv::Vector<_Tp>::operator [](size_t)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2363): or       'const ObjectFile &cv::Vector<_Tp>::operator [](size_t) const'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 while trying to match the argument list '(cv::Vector<_Tp>, ObjectFile)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2228: left of '.list' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2228: left of '.y' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2679: binary '[' : no operator found which takes a right-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2362): could be 'ObjectFile &cv::Vector<_Tp>::operator [](size_t)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 d:\opencv\build\include\opencv2\core\operations.hpp(2363): or       'const ObjectFile &cv::Vector<_Tp>::operator [](size_t) const'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+                 while trying to match the argument list '(cv::Vector<_Tp>, ObjectFile)'
+                 with
+                 [
+                     _Tp=ObjectFile
+                 ]
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2228: left of '.list' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(10): error C2228: left of '.width' must have class/struct/union
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(33): error C2679: binary '=' : no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+                 c:\users\dell\documents\visual studio 2010\projects\project\project\objectfile.h(19): could be 'ObjectFile &ObjectFile::operator =(const ObjectFile &)'
+                 while trying to match the argument list '(ObjectFile, int)'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(33): error C2678: binary '<' : no operator found which takes a left-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 d:\opencv\build\include\opencv2\core\operations.hpp(3136): could be 'bool cv::operator <(const cv::FileNodeIterator &,const cv::FileNodeIterator &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1298): or       'cv::MatExpr cv::operator <(const cv::Mat &,const cv::Mat &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1299): or       'cv::MatExpr cv::operator <(const cv::Mat &,double)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1300): or       'cv::MatExpr cv::operator <(double,const cv::Mat &)'
+                 d:\opencv\build\include\opencv2\core\mat.hpp(1979): or       'bool cv::operator <(const cv::MatConstIterator &,const cv::MatConstIterator &)'
+                 while trying to match the argument list '(ObjectFile, unsigned int)'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(33): error C2676: binary '++' : 'ObjectFile' does not define this operator or a conversion to a type acceptable to the predefined operator
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\rectoperations.h(35): error C2679: binary '[' : no operator found which takes a right-hand operand of type 'ObjectFile' (or there is no acceptable conversion)
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\vector(911): could be 'const std::vector<_Ty> &std::vector<std::vector<_Ty>>::operator [](unsigned int) const'
+                 with
+                 [
+                     _Ty=cv::Point
+                 ]
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\vector(927): or       'std::vector<_Ty> &std::vector<std::vector<_Ty>>::operator [](unsigned int)'
+                 with
+                 [
+                     _Ty=cv::Point
+                 ]
+                 while trying to match the argument list '(std::vector<_Ty>, ObjectFile)'
+                 with
+                 [
+                     _Ty=std::vector<cv::Point>
+                 ]
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\basefile.cpp(61): warning C4018: '<' : signed/unsigned mismatch
+     1>Done Building Project "C:\Users\DELL\documents\visual studio 2010\Projects\project\project\project.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:06.00

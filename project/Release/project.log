@@ -1,0 +1,36 @@
+﻿Build started 4/19/2014 3:51:06 PM.
+     1>Project "C:\Users\DELL\documents\visual studio 2010\Projects\project\project\project.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\project.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\opencv\build\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BaseFile.cpp
+         BaseFile.cpp
+     1>D:\opencv\build\include\opencv2/legacy/blobtrack.hpp(187): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>D:\opencv\build\include\opencv2/legacy/blobtrack.hpp(256): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\people.h(34): warning C4101: 'e' : unreferenced local variable
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\ObjectFile.h(11): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.inl(86) : see declaration of 'ctime'
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\RectOperations.h(7): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\RectOperations.h(38): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2010\projects\project\project\RectOperations.h(41): warning C4018: '<' : signed/unsigned mismatch
+     1>BaseFile.cpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>BaseFile.cpp(7): warning C4101: 'a' : unreferenced local variable
+     1>BaseFile.cpp(98): warning C4101: 'e' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DELL\documents\visual studio 2010\Projects\project\Release\project.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:D:\opencv\build\x86\vc10\lib opencv_calib3d245.lib opencv_calib3d245d.lib opencv_contrib245.lib opencv_contrib245d.lib opencv_core245.lib opencv_core245d.lib opencv_features2d245.lib opencv_features2d245d.lib opencv_flann245.lib opencv_flann245d.lib opencv_gpu245.lib opencv_gpu245d.lib opencv_haartraining_engine.lib opencv_haartraining_engined.lib opencv_highgui245.lib opencv_highgui245d.lib opencv_imgproc245.lib opencv_imgproc245d.lib opencv_legacy245.lib opencv_legacy245d.lib opencv_ml245.lib opencv_ml245d.lib opencv_nonfree245.lib opencv_nonfree245d.lib opencv_objdetect245.lib opencv_objdetect245d.lib opencv_photo245.lib opencv_photo245d.lib opencv_stitching245.lib opencv_stitching245d.lib opencv_superres245.lib opencv_superres245d.lib opencv_ts245.lib opencv_ts245d.lib opencv_video245.lib opencv_video245d.lib opencv_videostab245.lib opencv_videostab245d.lib opencv_core245.lib opencv_imgproc245.lib opencv_highgui245.lib opencv_ml245.lib opencv_video245.lib opencv_features2d245.lib opencv_calib3d245.lib opencv_objdetect245.lib opencv_contrib245.lib opencv_legacy245.lib opencv_flann245.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\project.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\DELL\documents\visual studio 2010\Projects\project\Release\project.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DELL\documents\visual studio 2010\Projects\project\Release\project.lib" /MACHINE:X86 Release\BaseFile.obj
+         Release\objectFile.obj
+         Generating code
+         Finished generating code
+         project.vcxproj -> C:\Users\DELL\documents\visual studio 2010\Projects\project\Release\project.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\DELL\documents\visual studio 2010\Projects\project\Release\project.exe;#1" /manifest Release\project.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\project.unsuccessfulbuild".
+         Touching "Release\project.lastbuildstate".
+     1>Done Building Project "C:\Users\DELL\documents\visual studio 2010\Projects\project\project\project.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.39

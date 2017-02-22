@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!-- saved from url=(0138)http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Histograms - 1 : Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/css" rel="stylesheet" type="text/css">
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+    <link rel="stylesheet" href="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+  
+    <link rel="top" title="OpenCV-Python Tutorials 1 documentation" href="http://opencv-python-tutroals.readthedocs.org/en/latest/index.html">
+        <link rel="up" title="Histograms in OpenCV" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms/py_table_of_contents_histograms.html">
+        <link rel="next" title="Histograms - 2: Histogram Equalization" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html">
+        <link rel="prev" title="Histograms in OpenCV" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms/py_table_of_contents_histograms.html">
+ 
+<!-- RTD Extra Head -->
+
+
+
+<!-- 
+Read the Docs is acting as the canonical URL for your project. 
+If you want to change it, more info is available in our docs:
+  http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation.htm">
+
+<script type="text/javascript" async="" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/ga.js"></script><script type="text/javascript" async="" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/ga.js"></script><script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "opencv-python-tutroals",
+    version: "latest",
+    language: "en",
+    page: "py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins",
+    theme: "sphinx_rtd_theme",
+    docroot: "/source/",
+    api_host: "https://readthedocs.org"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "opencv-python-tutroals";
+  var page_name = "py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins";
+  var html_theme = "sphinx_rtd_theme";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15552566-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End User Analytics Code -->
+
+<!-- end RTD <extrahead> -->
+
+
+  
+  <script src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document" style="">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="http://opencv-python-tutroals.readthedocs.org/en/latest/index.html" class="fa fa-home"> OpenCV-Python Tutorials</a>
+        <div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://opencv-python-tutroals.readthedocs.org/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_tutorials.html">OpenCV-Python Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html">Introduction to OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_gui/py_table_of_contents_gui/py_table_of_contents_gui.html">Gui Features in OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_core/py_table_of_contents_core/py_table_of_contents_core.html">Core Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_table_of_contents_imgproc/py_table_of_contents_imgproc.html">Image Processing in OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_feature2d/py_table_of_contents_feature2d/py_table_of_contents_feature2d.html">Feature Detection and Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_video/py_table_of_contents_video/py_table_of_contents_video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_calib3d/py_table_of_contents_calib3d/py_table_of_contents_calib3d.html">Camera Calibration and 3D Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_ml/py_table_of_contents_ml/py_table_of_contents_ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_photo/py_table_of_contents_photo/py_table_of_contents_photo.html">Computational Photography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_objdetect/py_table_of_contents_objdetect/py_table_of_contents_objdetect.html">Object Detection</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://opencv-python-tutroals.readthedocs.org/en/latest/index.html">OpenCV-Python Tutorials</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/index.html">Docs</a> »</li>
+      
+          <li><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_tutorials.html">OpenCV-Python Tutorials</a> »</li>
+      
+          <li><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_table_of_contents_imgproc/py_table_of_contents_imgproc.html">Image Processing in OpenCV</a> »</li>
+      
+          <li><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms/py_table_of_contents_histograms.html">Histograms in OpenCV</a> »</li>
+      
+    <li>Histograms - 1 : Find, Plot, Analyze !!!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/abidrahmank/OpenCV2-Python-Tutorials/blob/master/source/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main">
+            
+  <div class="section" id="histograms-1-find-plot-analyze">
+<span id="histograms-getting-started"></span><h1>Histograms - 1 : Find, Plot, Analyze !!!<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histograms-1-find-plot-analyze" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#goal" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Learn to</dt>
+<dd><ul class="first last simple">
+<li>Find histograms, using both OpenCV and Numpy functions</li>
+<li>Plot histograms, using OpenCV and Matplotlib functions</li>
+<li>You will see these functions : <strong>cv2.calcHist()</strong>, <strong>np.histogram()</strong> etc.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#theory" title="Permalink to this headline">¶</a></h2>
+<p>So what is histogram ? You can consider histogram as a graph or plot, which gives you an overall idea about the intensity distribution of an image. It is a plot with pixel values (ranging from 0 to 255, not always) in X-axis and corresponding number of pixels in the image on Y-axis.</p>
+<p>It is just another way of understanding the image. By looking at the histogram of an image, you get intuition about contrast, brightness, intensity distribution etc of that image. Almost all image processing tools today, provides features on histogram. Below is an image from <a class="reference external" href="http://www.cambridgeincolour.com/tutorials/histograms1.htm">Cambridge in Color website</a>, and I recommend you to visit the site for more details.</p>
+<blockquote>
+<div><img alt="Histogram Example" class="align-center" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/histogram_sample.jpg">
+</div></blockquote>
+<p>You can see the image and its histogram. (Remember, this histogram is drawn for grayscale image, not color image). Left region of histogram shows the amount of darker pixels in image and right region shows the amount of brighter pixels. From the histogram, you can see dark region is more than brighter region, and amount of midtones (pixel values in mid-range, say around 127) are very less.</p>
+</div>
+<div class="section" id="find-histogram">
+<h2>Find Histogram<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#find-histogram" title="Permalink to this headline">¶</a></h2>
+<p>Now we have an idea on what is histogram, we can look into how to find this. Both OpenCV and Numpy come with in-built function for this. Before using those functions, we need to understand some terminologies related with histograms.</p>
+<p><strong>BINS</strong> :The above histogram shows the number of pixels for every pixel value, ie from 0 to 255. ie you need 256 values to show the above histogram. But consider, what if you need not find the number of pixels for all pixel values separately, but number of pixels in a interval of pixel values? say for example, you need to find the number of pixels lying between 0 to 15, then 16 to 31, ..., 240 to 255. You will need only 16 values to represent the histogram. And that is what is shown in example given in <a class="reference external" href="http://docs.opencv.org/doc/tutorials/imgproc/histograms/histogram_calculation/histogram_calculation.html#histogram-calculation">OpenCV Tutorials on histograms</a>.</p>
+<p>So what you do is simply split the whole histogram to 16 sub-parts and value of each sub-part is the sum of all pixel count in it. This each sub-part is called “BIN”. In first case, number of bins where 256 (one for each pixel) while in second case, it is only 16. BINS is represented by the term <strong>histSize</strong> in OpenCV docs.</p>
+<p><strong>DIMS</strong> : It is the number of parameters for which we collect the data. In this case, we collect data regarding only one thing, intensity value. So here it is 1.</p>
+<p><strong>RANGE</strong> : It is the range of intensity values you want to measure. Normally, it is [0,256], ie all intensity values.</p>
+<div class="section" id="histogram-calculation-in-opencv">
+<h3>1. Histogram Calculation in OpenCV<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histogram-calculation-in-opencv" title="Permalink to this headline">¶</a></h3>
+<p>So now we use <strong>cv2.calcHist()</strong> function to find the histogram. Let’s familiarize with the function and its parameters :</p>
+<p class="centered">
+<strong><em>cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])</em></strong></p><ol class="arabic simple">
+<li>images : it is the source image of type uint8 or float32. it should be given in square brackets, ie, “[img]”.</li>
+<li>channels : it is also given in square brackets. It the index of channel for which we calculate histogram. For example, if input is grayscale image, its value is [0]. For color image, you can pass [0],[1] or [2] to calculate histogram of blue,green or red channel respectively.</li>
+<li>mask : mask image. To find histogram of full image, it is given as “None”. But if you want to find histogram of particular region of image, you have to create a mask image for that and give it as mask. (I will show an example later.)</li>
+<li>histSize : this represents our BIN count. Need to be given in square brackets. For full scale, we pass [256].</li>
+<li>ranges : this is our RANGE. Normally, it is [0,256].</li>
+</ol>
+<p>So let’s start with a sample image. Simply load an image in grayscale mode and find its full histogram.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'home.jpg'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">img</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="bp">None</span><span class="p">,[</span><span class="mi">256</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>hist is a 256x1 array, each value corresponds to number of pixels in that image with its corresponding pixel value.</p>
+</div>
+<div class="section" id="histogram-calculation-in-numpy">
+<h3>2. Histogram Calculation in Numpy<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histogram-calculation-in-numpy" title="Permalink to this headline">¶</a></h3>
+<p>Numpy also provides you a function, <strong>np.histogram()</strong>. So instead of calcHist() function, you can try below line :</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="mi">256</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>hist is same as we calculated before. But bins will have 257 elements, because Numpy calculates bins as 0-0.99, 1-1.99, 2-2.99 etc. So final range would be 255-255.99. To represent that, they also add 256 at end of bins. But we don’t need that 256. Upto 255 is sufficient.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Numpy has another function, <strong>np.bincount()</strong> which is much faster than (around 10X) np.histogram(). So for one-dimensional histograms, you can better try that. Don’t forget to set <tt class="docutils literal"><span class="pre">minlength</span> <span class="pre">=</span> <span class="pre">256</span></tt> in np.bincount. For example, <tt class="docutils literal"><span class="pre">hist</span> <span class="pre">=</span> <span class="pre">np.bincount(img.ravel(),minlength=256)</span></tt></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">OpenCV function is more faster than (around 40X) than np.histogram(). So stick with OpenCV function.</p>
+</div>
+<p>Now we should plot histograms, but how ?</p>
+</div>
+</div>
+<div class="section" id="plotting-histograms">
+<h2>Plotting Histograms<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#plotting-histograms" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>There are two ways for this,</dt>
+<dd><ol class="first last arabic simple">
+<li>Short Way : use Matplotlib plotting functions</li>
+<li>Long Way : use OpenCV drawing functions</li>
+</ol>
+</dd>
+</dl>
+<div class="section" id="using-matplotlib">
+<h3>1. Using Matplotlib<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#using-matplotlib" title="Permalink to this headline">¶</a></h3>
+<p>Matplotlib comes with a histogram plotting function : matplotlib.pyplot.hist()</p>
+<p>It directly finds the histogram and plot it. You need not use calcHist() or np.histogram() function to find the histogram. See the code below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'home.jpg'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="mi">256</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You will get a plot as below :</p>
+<blockquote>
+<div><img alt="Histogram Plotting in Matplotlib" class="align-center" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/histogram_matplotlib.jpg">
+</div></blockquote>
+<p>Or you can use normal plot of matplotlib, which would be good for BGR plot. For that, you need to find the histogram data first. Try below code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'home.jpg'</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="s">'b'</span><span class="p">,</span><span class="s">'g'</span><span class="p">,</span><span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+    <span class="n">histr</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">img</span><span class="p">],[</span><span class="n">i</span><span class="p">],</span><span class="bp">None</span><span class="p">,[</span><span class="mi">256</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">histr</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="n">col</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<blockquote>
+<div><img alt="Histogram Plotting in Matplotlib" class="align-center" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/histogram_rgb_plot.jpg">
+</div></blockquote>
+<p>You can deduct from the above graph that, blue has some high value areas in the image (obviously it should be due to the sky)</p>
+</div>
+<div class="section" id="using-opencv">
+<h3>2. Using OpenCV<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#using-opencv" title="Permalink to this headline">¶</a></h3>
+<p>Well, here you adjust the values of histograms along with its bin values to look like x,y coordinates so that you can draw it using cv2.line() or cv2.polyline() function to generate same image as above. This is already available with OpenCV-Python2 official samples. <a class="reference external" href="https://github.com/Itseez/opencv/raw/master/samples/python2/hist.py">Check the Code</a></p>
+</div>
+</div>
+<div class="section" id="application-of-mask">
+<h2>Application of Mask<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#application-of-mask" title="Permalink to this headline">¶</a></h2>
+<p>We used cv2.calcHist() to find the histogram of the full image. What if you want to find histograms of some regions of an image? Just create a mask image with white color on the region you want to find histogram and black otherwise. Then pass this as the mask.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'home.jpg'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># create a mask</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">mask</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">400</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">masked_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">img</span><span class="p">,</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">)</span>
+
+<span class="c"># Calculate histogram with mask and without mask</span>
+<span class="c"># Check third argument for mask</span>
+<span class="n">hist_full</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">img</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="bp">None</span><span class="p">,[</span><span class="mi">256</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+<span class="n">hist_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">img</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">mask</span><span class="p">,[</span><span class="mi">256</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">masked_img</span><span class="p">,</span> <span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist_full</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist_mask</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See the result. In the histogram plot, blue line shows histogram of full image while green line shows histogram of masked region.</p>
+<blockquote>
+<div><img alt="Histogram Example" class="align-center" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/histogram_masking.jpg">
+</div></blockquote>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.cambridgeincolour.com/tutorials/histograms1.htm">Cambridge in Color website</a></li>
+</ol>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#exercises" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html" class="btn btn-neutral float-right" title="Histograms - 2: Histogram Equalization">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms/py_table_of_contents_histograms.html" class="btn btn-neutral" title="Histograms in OpenCV"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2013, Alexander Mordvintsev &amp; Abid K.
+      Last updated on Mar 20, 2014.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+       
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+              
+              <dd><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/">latest</a></dd>
+              
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://media.readthedocs.org/pdf/opencv-python-tutroals/latest/opencv-python-tutroals.pdf">PDF</a></dd>
+        
+          <dd><a href="https://media.readthedocs.org/htmlzip/opencv-python-tutroals/latest/opencv-python-tutroals.zip">HTML</a></dd>
+        
+          <dd><a href="https://media.readthedocs.org/epub/opencv-python-tutroals/latest/opencv-python-tutroals.epub">Epub</a></dd>
+        
+      </dl>
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/opencv-python-tutroals/?fromdocs=opencv-python-tutroals">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/opencv-python-tutroals/?fromdocs=opencv-python-tutroals">Builds</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/projects/opencv-python-tutroals/downloads/">Downloads</a>
+          </dd>
+      </dl>
+      
+      <dl>
+        <dt>On GitHub</dt>
+          <dd>
+            <a href="https://github.com/abidrahmank/OpenCV2-Python-Tutorials/blob/master/source/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.rst">Edit</a>
+          </dd>
+      </dl>
+      
+      <hr>
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. Support us on <a href="https://www.gittip.com/readthedocs/">Gittip</a>.
+
+  
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./Histograms - 1   Find, Plot, Analyze !!! — OpenCV-Python Tutorials 1 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>
